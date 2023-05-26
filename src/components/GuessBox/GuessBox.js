@@ -1,15 +1,15 @@
 import React from 'react';
+import { NUM_OF_LETTERS_IN_WORD } from '../../constants';
 
 
 function GuessBox({ onGuess }) {
   const [guessTerm, setGuessTerm] = React.useState('');
-  const wordLength = 5;
   const pattern = /[a-zA-Z]{5}/;
 
   function onSubmit(ev) {
     ev.preventDefault();
-    if (guessTerm.length !== wordLength) {
-      window.alert(`You need to submit only ${wordLength}-letter words`);
+    if (guessTerm.length !== NUM_OF_LETTERS_IN_WORD) {
+      window.alert(`You need to submit only ${NUM_OF_LETTERS_IN_WORD}-letter words`);
       return;
     }
 

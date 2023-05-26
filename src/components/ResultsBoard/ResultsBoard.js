@@ -1,11 +1,12 @@
 import React from "react";
+import Guess from '../Guess';
 
-function ResultsBoard({results = []}) {
+function ResultsBoard({ results = [] }) {
   return (
     <div className="guess-results">
       {
         results.map((result, index) => (
-          <p key={index} className="guess">{result}</p>
+          <Guess key={index} letters={result} />
         ))
       }
     </div>
