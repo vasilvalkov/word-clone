@@ -2,6 +2,7 @@ import React from 'react';
 
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
+import GuessBox from '../GuessBox';
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -9,7 +10,15 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  return <>Put a game here!</>;
+
+  function onGuess(guess) {
+
+    console.log({guess});
+  }
+
+  return (
+    <GuessBox onGuess={onGuess} />
+  );
 }
 
 export default Game;
