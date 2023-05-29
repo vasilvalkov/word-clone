@@ -1,12 +1,14 @@
 import React from "react";
 
-function Guess({ letters = [] }) {
+function Guess({ slots = [] }) {
   return (
     <p className="guess">
       {
-        letters.map((letter, i) => (
-          <span key={i} className="cell">{letter}</span>
-        ))
+        slots.map((slot, i) => {
+          const classes = ['cell'];
+          slot && classes.push(slot.status);
+          return <span key={i} className={classes.join(' ')}>{slot.letter}</span>
+        })
       }
     </p>
   );

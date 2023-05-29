@@ -5,6 +5,7 @@ import { WORDS } from '../../data';
 import GuessBox from '../GuessBox';
 import ResultsBoard from '../ResultsBoard/ResultsBoard';
 import { NUM_OF_GUESSES_ALLOWED, NUM_OF_LETTERS_IN_WORD } from '../../constants';
+import { checkGuess } from '../../game-helpers';
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -25,7 +26,7 @@ function Game() {
       return;
     }
 
-    const letters = guess.split('');
+    const letters = checkGuess(guess, answer);
     const nextGuesses = [...guesses];
     nextGuesses[currentGuessNumber] = letters;
 

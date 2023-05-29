@@ -6,7 +6,7 @@ function ResultsBoard({ results = [] }) {
     <div className="guess-results">
       {
         results.map((result, index) => (
-          <Guess key={index} letters={result} />
+          <Guess key={index} slots={result} />
         ))
       }
     </div>
