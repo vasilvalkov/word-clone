@@ -2,9 +2,9 @@ import React from 'react';
 import { NUM_OF_LETTERS_IN_WORD } from '../../constants';
 
 
-function GuessBox({ onGuess }) {
+function GuessBox({ onGuess, disabled }) {
   const [guessTerm, setGuessTerm] = React.useState('');
-  const pattern = /[a-zA-Z]{5}/;
+  const pattern = /^[a-zA-Z]{5}$/;
 
   function onSubmit(ev) {
     ev.preventDefault();
@@ -23,7 +23,7 @@ function GuessBox({ onGuess }) {
       <input id="guess-input"
         type="text"
         value={guessTerm}
-        patter={pattern}
+        disabled={disabled}
         onChange={(e) => setGuessTerm(e.target.value.toUpperCase())} />
     </form>
   );
