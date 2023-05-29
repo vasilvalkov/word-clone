@@ -176,6 +176,25 @@ h1 {
   will-change: transform;
 }
 
+.banner button {
+  margin-top: 16px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  background: var(--color-gray-900);
+  color: var(--color-gray-300);
+  box-shadow: 0px 6px 10px -4px;
+  cursor: pointer;
+}
+
+.banner button:hover {
+  box-shadow: 0px 6px 10px 0px;
+}
+
+.banner button:active {
+  box-shadow: inset 0px 0px 3px 1px;
+}
+
 .happy.banner {
   background: var(--color-success);
   color: white;

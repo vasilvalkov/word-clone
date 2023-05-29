@@ -1,3 +1,5 @@
+import { NUM_OF_GUESSES_ALLOWED, NUM_OF_LETTERS_IN_WORD } from './constants';
+
 /**
  * Thanks to Github user dylano for supplying a more-accurate
  * solving algorithm!
@@ -52,4 +54,10 @@ export function checkGuess(guess, answer) {
   }
 
   return result;
+}
+
+export function initGameBoard() {
+  return Array(NUM_OF_GUESSES_ALLOWED).fill(
+    Array(NUM_OF_LETTERS_IN_WORD).fill('')
+  );
 }

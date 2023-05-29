@@ -5,20 +5,16 @@ import { WORDS } from '../../data';
 import GuessBox from '../GuessBox';
 import ResultsBoard from '../ResultsBoard/ResultsBoard';
 import GameOverBanner from '../GameOverBanner/GameOverBanner';
-import { NUM_OF_GUESSES_ALLOWED, NUM_OF_LETTERS_IN_WORD } from '../../constants';
-import { checkGuess } from '../../game-helpers';
-
-// Pick a random word on every pageload.
-const answer = sample(WORDS);
-// To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
+import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
+import { checkGuess, initGameBoard } from '../../game-helpers';
 
 function Game() {
-  const [guesses, setGuesses] = React.useState(
-    Array(NUM_OF_GUESSES_ALLOWED).fill(
-      Array(NUM_OF_LETTERS_IN_WORD).fill('')
-    )
-  );
+  // Pick a random word on every pageload.
+  const [answer, setAnswer] = React.useState(() => sample(WORDS));
+
+  // To make debugging easier, we'll log the solution in the console.
+  console.info({ answer });
+  const [guesses, setGuesses] = React.useState(() => initGameBoard());
   const [currentGuessNumber, setCurrentGuessNumber] = React.useState(0);
   const [gameState, setGameState] = React.useState({
     over: false, wins: false
@@ -44,11 +40,23 @@ function Game() {
     }
   }
 
+  function restartGame() {
+    setAnswer(() => sample(WORDS));
+    setGuesses(() => initGameBoard());
+    setCurrentGuessNumber(0);
+    setGameState({ over: false, wins: false });
+  }
+
   return (
     <>
       <ResultsBoard results={guesses} />
       <GuessBox onGuess={onGuess} disabled={isGameOver} />
-      {isGameOver && <GameOverBanner wins={gameState.wins} answer={answer} numGuesses={currentGuessNumber} />}
+      {isGameOver && <GameOverBanner
+        wins={gameState.wins}
+        answer={answer}
+        numGuesses={currentGuessNumber}
+        onRestart={restartGame}
+      />}
     </>
   );
 }

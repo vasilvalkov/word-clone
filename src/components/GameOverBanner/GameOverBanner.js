@@ -1,6 +1,6 @@
 import React from "react";
 
-function GameOverBanner({ wins, answer, numGuesses }) {
+function GameOverBanner({ wins, answer, numGuesses, onRestart }) {
   return (
     <div className={`${wins ? 'happy' : 'sad'} banner`}>
       <p>
@@ -14,6 +14,9 @@ function GameOverBanner({ wins, answer, numGuesses }) {
             <>Sorry, the correct answer is <strong>{answer}</strong>.</>
         }
       </p>
+      <div>
+        <button onClick={onRestart}>Restart Game</button>
+      </div>
     </div>
   );
 }
