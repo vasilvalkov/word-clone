@@ -1,4 +1,4 @@
-import { NUM_OF_GUESSES_ALLOWED, NUM_OF_LETTERS_IN_WORD } from './constants';
+import { NUM_OF_GUESSES_ALLOWED, NUM_OF_LETTERS_IN_WORD, KEYBOARD_LETTERS } from './constants';
 
 /**
  * Thanks to Github user dylano for supplying a more-accurate
@@ -60,4 +60,13 @@ export function initGameBoard() {
   return Array(NUM_OF_GUESSES_ALLOWED).fill(
     Array(NUM_OF_LETTERS_IN_WORD).fill('')
   );
+}
+
+export function keysStates() {
+  const states = KEYBOARD_LETTERS.reduce((acc, letter) => {
+    acc[letter] = '';
+    return acc;
+  }, {});
+
+  return states;
 }

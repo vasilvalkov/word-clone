@@ -4,7 +4,6 @@ import { NUM_OF_LETTERS_IN_WORD } from '../../constants';
 
 function GuessBox({ onGuess, disabled }) {
   const [guessTerm, setGuessTerm] = React.useState('');
-  const pattern = /^[a-zA-Z]{5}$/;
 
   function onSubmit(ev) {
     ev.preventDefault();
@@ -22,8 +21,13 @@ function GuessBox({ onGuess, disabled }) {
       <label htmlFor="guess-input">Enter guess:</label>
       <input id="guess-input"
         type="text"
-        value={guessTerm}
+        pattern="^[a-zA-Z]{5}$"
+        title={`${NUM_OF_LETTERS_IN_WORD} letter word`}
+        required
+        minLength={NUM_OF_LETTERS_IN_WORD}
+        maxLength={NUM_OF_LETTERS_IN_WORD}
         disabled={disabled}
+        value={guessTerm}
         onChange={(e) => setGuessTerm(e.target.value.toUpperCase())} />
     </form>
   );

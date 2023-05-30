@@ -7,6 +7,7 @@ import ResultsBoard from '../ResultsBoard/ResultsBoard';
 import GameOverBanner from '../GameOverBanner/GameOverBanner';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 import { checkGuess, initGameBoard } from '../../game-helpers';
+import VisualKeyboard from '../VisualKeyboard/VisualKeyboard';
 
 function Game() {
   // Pick a random word on every pageload.
@@ -51,6 +52,7 @@ function Game() {
     <>
       <ResultsBoard results={guesses} />
       <GuessBox onGuess={onGuess} disabled={isGameOver} />
+      <VisualKeyboard guesses={guesses.slice(0, currentGuessNumber)} />
       {isGameOver && <GameOverBanner
         wins={gameState.wins}
         answer={answer}
